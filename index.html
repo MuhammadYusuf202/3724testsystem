@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3724-Test-System</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="top-bar">3724-TEST-SYSTEM</div>
+  <div class="container">
+    <!-- Login Screen -->
+    <div id="login-screen">
+      <h2>Добро пожаловать!</h2>
+      <p class="subtext">New features coming soon ;)</p>
+      <input type="text" id="username" placeholder="Имя пользователя">
+      <button onclick="startTest()">Начать тест</button>
+    </div>
+
+    <!-- Test Screen -->
+    <div id="test-screen" style="display: none;">
+      <h2 id="question"></h2>
+      <div id="options"></div>
+      <button id="skip-btn" onclick="skipQuestion()">Пропустить</button>
+      <button id="answer-btn" onclick="answerQuestion()">Ответить</button>
+    </div>
+
+    <!-- Results Screen -->
+    <div id="results-screen" style="display: none;">
+      <h2>Результаты</h2>
+      <p id="score"></p>
+      <button onclick="showDetailedResults()">Посмотреть результаты</button>
+      <div id="detailed-results" style="display: none;"></div>
+    </div>
+  </div>
+  <div class="footer">3724-Monitor© 2025. ver.0.0.2b</div>
+  <script src="script.js"></script>
+</body>
+</html>

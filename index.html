@@ -20,10 +20,12 @@
 
     <!-- Test Screen -->
     <div id="test-screen" style="display: none;">
+      <div id="question-counter"></div>
       <h2 id="question"></h2>
       <div id="options"></div>
       <button id="skip-btn" onclick="skipQuestion()">Пропустить</button>
       <button id="answer-btn" onclick="answerQuestion()">Ответить</button>
+      <div id="timer">00:00:00</div>
     </div>
 
     <!-- Results Screen -->
@@ -31,10 +33,16 @@
       <h2>Результаты</h2>
       <p id="score"></p>
       <button onclick="showDetailedResults()">Посмотреть результаты</button>
+      <button onclick="showLeaderboard()">Leaderboard</button>
       <div id="detailed-results" style="display: none;"></div>
+      <div id="leaderboard" style="display: none;"></div>
     </div>
   </div>
-  <div class="footer">3724-Monitor© 2025. ver.0.0.2b</div>
+  <div class="footer">
+    <span>Any questions? Write to admin!</span>
+    <a href="https://t.me/xxxxxxxxx" target="_blank">Admin</a>
+    <span>3724-Monitor© 2025. ver.0.1.2.b</span>
+  </div>
   <script src="script.js"></script>
 </body>
 </html>

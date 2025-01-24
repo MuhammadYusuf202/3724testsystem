@@ -1,48 +1,53 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>3724-Test-System</title>
-  <link rel="stylesheet" href="styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8"> <!-- Set character encoding to UTF-8 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Make the page responsive -->
+  <title>3724-Test-System</title> <!-- Title of the page -->
+  <link rel="stylesheet" href="styles.css"> <!-- Link to the CSS file -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap" rel="stylesheet"> <!-- Noto Serif font -->
+  <link href="https://fonts.googleapis.com/css2?family=Bayon&display=swap" rel="stylesheet"> <!-- Bayon font -->
 </head>
-<body>
-  <div class="top-bar">3724-TEST-SYSTEM</div>
+<body class="day"> <!-- Default to day mode -->
+  <div class="top-bar day">3724-TEST-SYSTEM</div> <!-- Top bar with the title -->
   <div class="container">
     <!-- Login Screen -->
     <div id="login-screen">
-      <h2>Добро пожаловать!</h2>
-      <p class="subtext">New features coming soon ;)</p>
-      <input type="text" id="username" placeholder="Имя пользователя">
-      <button onclick="startTest()">Начать тест</button>
+      <h2>Добро пожаловать!</h2> <!-- Welcome message -->
+      <p class="subtext">New features coming soon ;)</p> <!-- Subtext -->
+      <input type="text" id="username" placeholder="Имя пользователя"> <!-- Username input -->
+      <button onclick="startTest()">All Tests</button> <!-- Start all tests button -->
+      <button onclick="startRandomTest()">Random 25</button> <!-- Start random 25 tests button -->
+      <div class="color-mode-switch">
+        <button onclick="toggleColorMode()">Switch to Night Mode</button> <!-- Color mode toggle button -->
+      </div>
     </div>
 
     <!-- Test Screen -->
-    <div id="test-screen" style="display: none;">
-      <div id="question-counter"></div>
-      <h2 id="question"></h2>
-      <div id="options"></div>
-      <button id="skip-btn" onclick="skipQuestion()">Пропустить</button>
-      <button id="answer-btn" onclick="answerQuestion()">Ответить</button>
-      <div id="timer">00:00:00</div>
+    <div id="test-screen" style="display: none;"> <!-- Test screen, hidden by default -->
+      <div id="question-counter"></div> <!-- Question counter -->
+      <h2 id="question"></h2> <!-- Question text -->
+      <div id="options"></div> <!-- Answer options -->
+      <button id="skip-btn" onclick="skipQuestion()">Пропустить</button> <!-- Skip button -->
+      <button id="answer-btn" onclick="answerQuestion()">Ответить</button> <!-- Answer button -->
+      <div id="timer">00:00:00</div> <!-- Timer -->
     </div>
 
     <!-- Results Screen -->
-    <div id="results-screen" style="display: none;">
-      <h2>Результаты</h2>
-      <p id="score"></p>
-      <button onclick="showDetailedResults()">Посмотреть результаты</button>
-      <button onclick="showLeaderboard()">Leaderboard</button>
-      <div id="detailed-results" style="display: none;"></div>
-      <div id="leaderboard" style="display: none;"></div>
+    <div id="results-screen" style="display: none;"> <!-- Results screen, hidden by default -->
+      <h2>Результаты</h2> <!-- Results title -->
+      <p id="score"></p> <!-- Score display -->
+      <button onclick="showDetailedResults()">Посмотреть результаты</button> <!-- Detailed results button -->
+      <button onclick="showLeaderboard()">Leaderboard</button> <!-- Leaderboard button -->
+      <div id="detailed-results" style="display: none;"></div> <!-- Detailed results, hidden by default -->
+      <div id="leaderboard" style="display: none;"></div> <!-- Leaderboard, hidden by default -->
     </div>
   </div>
-  <div class="footer">
-    <span>Any questions? Write to admin!</span>
-    <a href="https://t.me/patibilis" target="_blank">Admin</a>
-    <span>3724-Monitor© 2025. ver.0.1.2.b</span>
+  <div class="footer day">
+    <span>Вопросы к админу</span> <!-- Footer text -->
+    <a href="https://t.me/patibilis" target="_blank">Админ</a> <!-- Admin link -->
+    <span>3724-Monitor© 2025. ver.0.1.2.b</span> <!-- Footer text -->
   </div>
-  <script src="script.js"></script>
+  <script src="script.js"></script> <!-- Link to the JavaScript file -->
 </body>
 </html>

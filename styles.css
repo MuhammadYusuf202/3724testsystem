@@ -1,167 +1,278 @@
+/* General Styles */
 body {
-  font-family: 'Roboto', Arial, sans-serif;
-  background-color: #f7f7f7;
-  margin: 0;
-  padding: 0;
-  color: black;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+  display: flex; /* Use flexbox layout */
+  flex-direction: column; /* Arrange children in a column */
+  min-height: 100vh; /* Set minimum height to 100% of the viewport height */
+  font-family: 'Noto Serif', serif; /* Default font for all text */
 }
 
-.top-bar {
-  background-color: #3b5998;
-  color: white;
-  font-size: 28px;
-  font-weight: bold;
+/* Day Theme */
+body.day {
+  background-color: #ffffff; /* White background */
+  color: #333333; /* Dark text */
+}
+
+.top-bar.day {
+  background-color: #2779a7; /* Blue top bar */
+  color: #ffffff; /* White text */
+  font-family: 'Bayon', sans-serif; /* Bayon font for top bar */
+  font-size: 40px;
   text-align: center;
-  padding: 20px;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  left: 0;
-  z-index: 1000;
-  font-family: 'Roboto', sans-serif;
-  letter-spacing: 1px;
 }
 
+.footer.day {
+  background-color: #2779a7; /* Blue footer */
+  color: #ffffff; /* White text */
+  font-family: 'Bayon', sans-serif; /* Bayon font for footer */
+}
+
+.option-button.day {
+  border-color: #00a65a; /* Green border for options */
+  background-color: #ffffff; /* White background for options */
+  color: #333333; /* Dark text for options */
+}
+
+.option-button.day.selected {
+  background-color: #00a65a; /* Green background for selected option */
+  color: #ffffff; /* White text for selected option */
+}
+
+button.day {
+  background-color: #00a65a; /* Green buttons */
+  color: #ffffff; /* White text */
+}
+
+.correct-answer.day {
+  color: #00a65a; /* Green for correct answers */
+  font-weight: bold;
+}
+
+.wrong-answer.day {
+  color: #b31717; /* Red for wrong answers */
+  font-weight: bold;
+}
+
+/* Night Theme */
+body.night {
+  background-color: #2F3640; /* Dark background */
+  color: #ffffff; /* White text */
+}
+
+.top-bar.night {
+  background-color: #353B48; /* Darker top bar */
+  color: #ffffff; /* White text */
+  font-family: 'Bayon', sans-serif; /* Bayon font for top bar */
+  font-size: 40px;
+  text-align: center;
+}
+
+.footer.night {
+  background-color: #353B48; /* Darker footer */
+  color: #ffffff; /* White text */
+  font-family: 'Bayon', sans-serif; /* Bayon font for footer */
+}
+
+.option-button.night {
+  border-color: #00B894; /* Teal border for options */
+  background-color: #2F3640; /* Dark background for options */
+  color: #ffffff; /* White text for options */
+}
+
+.option-button.night.selected {
+  background-color: #00B894; /* Teal background for selected option */
+  color: #ffffff; /* White text for selected option */
+}
+
+button.night {
+  background-color: #00B894; /* Teal buttons */
+  color: #ffffff; /* White text */
+}
+
+.correct-answer.night {
+  color: #00B894; /* Teal for correct answers */
+  font-weight: bold;
+}
+
+.wrong-answer.night {
+  color: #D63031; /* Red for wrong answers */
+  font-weight: bold;
+}
+
+/* Common Styles */
 .container {
-  padding: 100px 20px 60px;
-  max-width: 600px;
-  margin: 0 auto;
-  flex: 1;
+  padding: 100px 20px 60px; /* Add padding */
+  max-width: 600px; /* Set the maximum width */
+  margin: 0 auto; /* Center the container */
+  flex: 1; /* Allow the container to grow */
 }
 
 h2 {
-  margin-bottom: 20px;
-  font-weight: 700;
+  margin-bottom: 20px; /* Add margin below the heading */
+  font-weight: 700; /* Set the font weight */
 }
 
 .subtext {
-  font-size: 14px;
-  color: #666;
-  margin-bottom: 20px;
+  font-size: 14px; /* Set the font size */
+  color: #b2b2b2; /* Set the text color */
+  margin-bottom: 20px; /* Add margin below the subtext */
 }
 
 input {
-  padding: 10px;
-  width: 100%;
-  margin-bottom: 10px;
-  border: 1px solid #3b5998;
-  border-radius: 5px;
+  padding: 10px; /* Add padding */
+  width: 100%; /* Set the width to 100% */
+  margin-bottom: 10px; /* Add margin below the input */
+  border: 1px solid #3b5998; /* Set the border color */
+  border-radius: 0px; /* Add border radius */
 }
 
 button {
-  padding: 10px 20px;
-  background-color: #3b5998;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin: 5px;
+  padding: 10px 20px; /* Add padding */
+  border: none; /* Remove the border */
+  border-radius: 0px; /* Add border radius */
+  cursor: pointer; /* Set the cursor to pointer */
+  margin: 5px; /* Add margin */
 }
 
 button:hover {
-  background-color: #2d4373;
+  opacity: 0.9; /* Reduce opacity on hover */
 }
 
 #question-counter {
-  font-size: 14px;
-  color: #666;
-  margin-bottom: 10px;
+  font-size: 14px; /* Set the font size */
+  color: #666; /* Set the text color */
+  margin-bottom: 10px; /* Add margin below the counter */
 }
 
 #options {
-  margin-bottom: 20px;
+  margin-bottom: 20px; /* Add margin below the options */
 }
 
 .option-button {
-  display: block;
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  background-color: #f7f7f7;
-  border: 2px solid #3b5998;
-  border-radius: 5px;
-  cursor: pointer;
-  text-align: left;
-}
-
-.option-button.selected {
-  background-color: #3b5998;
-  color: white;
+  display: block; /* Display as a block element */
+  width: 90%; /* Set the width to 100% */
+  padding: 10px; /* Add padding */
+  margin: 10px 0; /* Add margin */
+  border: 1px solid; /* Set the border color */
+  border-radius: 0px; /* Add border radius */
+  cursor: pointer; /* Set the cursor to pointer */
+  text-align: left; /* Align text to the left */
 }
 
 #timer {
-  font-size: 18px;
-  font-weight: bold;
-  margin-top: 20px;
-  color: #3b5998;
+  font-size: 18px; /* Set the font size */
+  font-weight: bold; /* Set the font weight */
+  margin-top: 10px; /* Add margin above the timer */
 }
 
 #detailed-results {
-  margin-top: 20px;
+  margin-top: 20px; /* Add margin above the detailed results */
 }
 
 .result-item {
-  border: 2px solid #3b5998;
-  border-radius: 5px;
-  padding: 10px;
-  margin-bottom: 10px;
-}
-
-.correct-answer {
-  color: green;
-  font-weight: bold;
-}
-
-.wrong-answer {
-  color: red;
-  font-weight: bold;
-}
-
-#leaderboard {
-  margin-top: 20px;
+  border: 1px solid; /* Set the border color */
+  border-radius: 0px; /* Add border radius */
+  padding: 8px; /* Add padding */
+  margin-bottom: 10px; /* Add margin below each result item */
 }
 
 .leaderboard-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 10px;
+  width: 100%; /* Set the width to 100% */
+  border-collapse: collapse; /* Collapse the table borders */
+  margin-top: 10px; /* Add margin above the table */
 }
 
 .leaderboard-table th,
 .leaderboard-table td {
-  border: 1px solid #3b5998;
-  padding: 8px;
-  text-align: left;
+  border: 1px solid; /* Set the border color */
+  padding: 8px; /* Add padding */
+  text-align: left; /* Align text to the left */
 }
 
 .leaderboard-table th {
-  background-color: #3b5998;
-  color: white;
+  background-color: #353b48; /* Set the background color for table headers */
+  color: white; /* Set the text color */
 }
 
 .footer {
-  text-align: left;
-  padding: 10px;
-  background-color: #3b5998;
-  color: white;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  font-size: 12px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  text-align: left; /* Align text to the left */
+  padding: 10px; /* Add padding */
+  position: fixed; /* Fix the footer at the bottom */
+  bottom: 0; /* Position at the bottom */
+  width: 100%; /* Set the width to 100% */
+  font-size: 12px; /* Set the font size */
+  display: flex; /* Use flexbox layout */
+  justify-content: space-around; /* Space out the elements */
+  align-items: center; /* Center the elements vertically */
 }
 
 .footer a {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
+  color: white; /* Set the text color */
+  text-decoration: none; /* Remove underline */
+  font-weight: normal; /* Set the font weight */
 }
 
 .footer a:hover {
-  text-decoration: underline;
+  text-decoration: underline; /* Add underline on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding: 80px 10px 50px; /* Adjust padding for smaller screens */
+    max-width: 100%; /* Allow the container to take full width */
+  }
+
+  .top-bar {
+    font-size: 24px; /* Reduce font size for smaller screens */
+    padding: 15px; /* Adjust padding */
+  }
+
+  h2 {
+    font-size: 20px; /* Reduce heading size */
+  }
+
+  .option-button {
+    padding: 8px; /* Adjust padding for options */
+    font-size: 14px; /* Reduce font size for options */
+  }
+
+  button {
+    padding: 8px 16px; /* Adjust button padding */
+    font-size: 14px; /* Reduce button font size */
+  }
+
+  #timer {
+    font-size: 16px; /* Reduce timer font size */
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 60px 10px 40px; /* Further adjust padding for very small screens */
+  }
+
+  .top-bar {
+    font-size: 20px; /* Further reduce font size */
+    padding: 10px; /* Further adjust padding */
+  }
+
+  h2 {
+    font-size: 18px; /* Further reduce heading size */
+  }
+
+  .option-button {
+    padding: 6px; /* Further adjust padding for options */
+    font-size: 12px; /* Further reduce font size for options */
+  }
+
+  button {
+    padding: 6px 12px; /* Further adjust button padding */
+    font-size: 12px; /* Further reduce button font size */
+  }
+
+  #timer {
+    font-size: 14px; /* Further reduce timer font size */
+  }
 }

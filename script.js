@@ -7,37 +7,29 @@ let timerInterval = null; // Interval for the timer
 
 // Load test data from txt file
 async function loadTests() {
-  try {
-    const response = await fetch("tests.txt"); // Fetch the test file
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+  const response = await fetch("tests.txt"); // Fetch the test file
+  const text = await response.text(); // Get the text content of the file
+  const lines = text.split("\n"); // Split the text into lines
+
+  let question = {}; // Object to store a single question
+  lines.forEach((line) => {
+    if (line.startsWith("?")) { // If the line starts with '?', it's a question
+      if (question.text) questions.push(question); // Push the previous question to the array
+      question = { text: line.slice(2).trim(), options: [], correctAnswer: "" }; // Create a new question object
+    } else if (line.startsWith("+") || line.startsWith("=")) { // If the line starts with '+' or '=', it's an option
+      const isCorrect = line.startsWith("+"); // Check if the option is correct
+      const optionText = line.slice(1).trim(); // Remove the prefix and trim the option text
+      question.options.push(optionText); // Add the option to the question
+      if (isCorrect) question.correctAnswer = optionText; // Set the correct answer
     }
-    const text = await response.text(); // Get the text content of the file
-    const lines = text.split("\n"); // Split the text into lines
+  });
+  if (question.text) questions.push(question); // Push the last question to the array
 
-    let question = {}; // Object to store a single question
-    lines.forEach((line) => {
-      if (line.startsWith("?")) { // If the line starts with '?', it's a question
-        if (question.text) questions.push(question); // Push the previous question to the array
-        question = { text: line.slice(2).trim(), options: [], correctAnswer: "" }; // Create a new question object
-      } else if (line.startsWith("+") || line.startsWith("=")) { // If the line starts with '+' or '=', it's an option
-        const isCorrect = line.startsWith("+"); // Check if the option is correct
-        const optionText = line.slice(1).trim(); // Remove the prefix and trim the option text
-        question.options.push(optionText); // Add the option to the question
-        if (isCorrect) question.correctAnswer = optionText; // Set the correct answer
-      }
-    });
-    if (question.text) questions.push(question); // Push the last question to the array
-
-    // Randomize the order of questions and options
-    questions = shuffleArray(questions);
-    questions.forEach(question => {
-      question.options = shuffleArray(question.options); // Shuffle options for each question
-    });
-  } catch (error) {
-    alert("Error loading test data."); // Show an alert if there is an error
-    console.error("Error loading test data:", error);
-  }
+  // Randomize the order of questions and options
+  questions = shuffleArray(questions);
+  questions.forEach(question => {
+    question.options = shuffleArray(question.options); // Shuffle options for each question
+  });
 }
 
 // Shuffle an array (Fisher-Yates algorithm)
@@ -105,7 +97,7 @@ function loadQuestion() {
   // Add variant letters (а, б, в, г) to the options
   const variantLetters = ["а", "б", "в", "г"];
   const optionsHtml = question.options.map((option, index) => `
-    <div class="option-button" onclick="selectOption(this)">
+    <div class="option-button ${document.body.classList.contains('night') ? 'night' : 'day'}" onclick="selectOption(this)">
       ${variantLetters[index]}) ${option}
     </div>
   `).join(""); // Create HTML for the options
@@ -125,7 +117,6 @@ function loadQuestion() {
   // Update buttons
   const isLastQuestion = currentQuestionIndex === questions.length - 1;
   document.getElementById("answer-btn").innerText = isLastQuestion ? "Завершить тестирование" : "Ответить"; // Update the button text
-  updateProgress();// Update the progress bar
 }
 
 // Select an option
@@ -187,10 +178,10 @@ function showDetailedResults() {
     detailedResults.style.display = "none"; // Hide detailed results if already shown
   } else {
     const detailedResultsHtml = questions.map((question, index) => `
-      <div class="result-item">
+      <div class="result-item ${document.body.classList.contains('night') ? 'night' : 'day'}">
         <h3>${question.text}</h3>
-        <p><strong>Правильный ответ:</strong> <span class="correct-answer">${question.correctAnswer}</span></p>
-        <p><strong>Ваш ответ:</strong> <span class="${userAnswers[index] === question.correctAnswer ? "correct-answer" : "wrong-answer"}">${userAnswers[index] || "Пропущено"}</span></p>
+        <p><strong>Правильный ответ:</strong> <span class="correct-answer ${document.body.classList.contains('night') ? 'night' : 'day'}">${question.correctAnswer}</span></p>
+        <p><strong>Ваш ответ:</strong> <span class="${userAnswers[index] === question.correctAnswer ? "correct-answer" : "wrong-answer"} ${document.body.classList.contains('night') ? 'night' : 'day'}">${userAnswers[index] || "Пропущено"}</span></p>
       </div>
     `).join(""); // Create HTML for detailed results
     detailedResults.innerHTML = detailedResultsHtml; // Display detailed results
@@ -206,7 +197,7 @@ function showLeaderboard() {
   } else {
     const results = JSON.parse(localStorage.getItem("results")) || []; // Get results from localStorage
     const leaderboardHtml = `
-      <table class="leaderboard-table">
+      <table class="leaderboard-table ${document.body.classList.contains('night') ? 'night' : 'day'}">
         <thead>
           <tr>
             <th>Имя</th>
@@ -292,15 +283,6 @@ function toggleColorMode() {
     document.querySelector('.color-mode-switch button').innerText = 'Switch to Night Mode';
   }
 }
-
-function updateProgress() {
-  const progress = (currentQuestionIndex / questions.length) * 100;
-  document.getElementById('progress-bar').style.width = `${progress}%`;
-}
-
-// Event listener for the switch
-const modeSwitch = document.querySelector('.switch input');
-modeSwitch.addEventListener('change', toggleColorMode);
 
 // Initialize
 loadTests(); // Load the tests when the page loads
